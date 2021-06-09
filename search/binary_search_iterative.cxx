@@ -8,31 +8,31 @@
 using namespace std;
 
 // Returns location of x
-int binary_search(int *arr, int l, int r, int x) {
+int binary_search(int arr[], int l, int r, int x) {
 
-  if (r >= l) { // Checking an array for emptiness
+  while (l <= r) { // Checking an array for emptiness
     int mid = l + (r - l) / 2;
 
-    // If x at the middle 
+    // If x at the middle
     if (arr[mid] == x)
       return mid;
 
-    // If x is smaller then mid, it in left subarray
-    if (arr[mid] > x)
-      return binary_search(arr, l, mid - 1, x);
+    // If x greater, ignore left half
+    if (arr[mid] < x)
+      l = mid + 1;
 
-    // Else x in right subarray 
-    return binary_search(arr, mid + 1, r, x);
+    // If x is smaller, ignore right half
+    else
+      r = mid - 1;
   }
 
-  // Otherwise x is not in array 
+  // Otherwise x is not in array
   return -1;
 }
 
 int main() {
-
-  int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-  int x = 2; // Required element
+  int arr[] = {3, 4, 5, 6, 7, 8, 33};
+  int x = 5; // Required element
   int n = sizeof(arr) / sizeof(arr[0]);
   int result = binary_search(arr, 0, n - 1, x);
   cout << "x at index " << result;
