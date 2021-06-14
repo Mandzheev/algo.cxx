@@ -57,9 +57,8 @@ void print_array(int A[], int size) {
 }
 int main() {
 
-  int arr[] = {4, 5, 8, 34, 1, 3, 44, 56, 9};
-  int arr_size = sizeof(arr) / sizeof(arr[0]);
 
+    
   merge_sort(arr,0,arr_size-1);
   print_array(arr,arr_size);
 }
